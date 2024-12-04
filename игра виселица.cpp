@@ -1,6 +1,10 @@
 ﻿#include <iostream>
 #include <string>
-#include <iomanip>
+#include <cstdlib> 
+#include <ctime>   
+#include "Windows.h"
+using namespace std;
+
 // Функция для отображения состояния игры
 void displayState(const string& word, const string& guessed)
 {
