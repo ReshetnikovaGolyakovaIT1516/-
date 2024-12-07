@@ -51,3 +51,15 @@ bool checkGuess(char guess, const string& word, string& guessed)
 
     return false;
 }
+int main()
+{
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    setlocale(LC_ALL, "Russian");
+    string words[] = { "программист", "алгоритм", "компьютер", "виселица", "разработка", "яблоко", "груша", "стол", "программа", "интернет", "телефон", "процессор", "ламинария" };
+    srand(time(0));
+    string word = words[rand() % (sizeof(words) / sizeof(words[0]))];
+    cout << "Добро пожаловать в игру Виселица!" << endl;
+
+    return 0;
+}
