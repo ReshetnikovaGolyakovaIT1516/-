@@ -33,11 +33,21 @@ void displayState(const string& word, const string& guessed)
 // Функция для проверки буквы
 bool checkGuess(char guess, const string& word, string& guessed)
 {
-    // Проверяем, была ли уже угадана буква
     for (char g : guessed)
     {
         if (g == guess)
         {
-            return false; // Буква уже угадана
+            return false; 
         }
     }
+    guessed += guess;
+    for (char c : word)// Проверяем, есть ли буква в слове
+    {
+        if (c == guess)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
