@@ -31,25 +31,31 @@ void displayState(const string& word, const string& guessed)
     cout << endl;
 }
 // Функция для проверки буквы
-bool checkGuess(char guess, const string& word, string& guessed)
+bool checkGuess(char guess, const string& word, string& guessed, int& attempts)
 {
     for (char g : guessed)
     {
         if (g == guess)
         {
+            cout << "Эта буква уже была угадана: " << guess << endl; 
             return false; 
         }
     }
     guessed += guess;
+    bool found = false; // Переменная для отслеживания нахождения буквы в слове
     for (char c : word)// Проверяем, есть ли буква в слове
     {
         if (c == guess)
         {
-            return true;
+            found = true;
+            break;
         }
     }
-
-    return false;
+    if (!found) // Если буква не найдена в слове
+    {
+        attempts++; // Увеличиваем кол-во попыток если буква не была угадана
+    }
+    return found; 
 }
 int main()
 {
@@ -70,9 +76,8 @@ int main()
         char guess;
         cin >> guess;
         guess = tolower(guess);
-        if (!checkGuess(guess, word, guessed))// была ли буква угадана
+        if (!checkGuess(guess, word, guessed, attempts)) // была ли буква угадана 
         {
-            attempts++;
             cout << "Неправильно! Осталось попыток: " << (maxAttempts - attempts) << endl;
         }
         else
